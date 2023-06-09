@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow>
+<!--    <chain name="mainChain">-->
+<!--        THEN(-->
+<!--            checkCmp, slotInitCmp, priceStepInitCmp,-->
+<!--            promotionConvertCmp, memberDiscountCmp,-->
+<!--            promotionChain, couponCmp,-->
+<!--            SWITCH(postageCondCmp).to(postageCmp, overseaPostageCmp),-->
+<!--            priceResultCmp, stepPrintCmp-->
+<!--        );-->
+<!--    </chain>-->
+
+    <chain name="mainChain">
+        THEN(
+        checkCmp, slotInitCmp, priceStepInitCmp,promotionConvertCmp,
+        WHEN( memberDiscountCmp,fullCutCmp, fullDiscountCmp, rushBuyCmp, couponCmp),
+        SWITCH(postageCondCmp).to(postageCmp, overseaPostageCmp),
+        priceResultCmp, stepPrintCmp
+        );
+    </chain>
+
+
+
+<!--    <chain name="promotionChain">-->
+<!--        THEN(fullCutCmp, fullDiscountCmp, rushBuyCmp);-->
+<!--    </chain>-->
+
+
+
+    <chain name="businessService">
+        THEN(aComponent, bComponent, cComponent);
+    </chain>
+
+</flow>
